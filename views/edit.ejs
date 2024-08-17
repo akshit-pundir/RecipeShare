@@ -1,0 +1,109 @@
+<% layout('layouts/boilerplate') %>
+
+
+ <div class="flex items-center justify-center p-12 -mt-28">
+  
+    <div class="mx-auto w-full max-w-[550px] bg-white">
+        <form action="/reciepe/<%= DBReciepe.id %>?_method=PUT" method="post">
+            <div class="mb-5">
+                <label for="title" class="mb-3 block text-base font-medium text-[#07074D]">Title</label>
+                <input type="text" name="title" id="title" placeholder="Dish Name"
+                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" value="<%= DBReciepe.title %>" />
+            </div>
+
+            <div class="mb-5">
+                <label for="image" class="mb-3 block text-base font-medium text-[#07074D]">Image Link</label>
+                <input type="text" name="image" id="image" placeholder="Enter your Image Link"
+                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" value="<%= DBReciepe.image %>" />
+            </div>
+            <div class="mb-5">
+                <label for="youtube" class="mb-3 block text-base font-medium text-[#07074D]">
+                    Youtube link
+                </label>
+                <input type="text" name="youtube" id="youtube" placeholder="Enter your email"
+                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" value="<%= DBReciepe.youtube %>" />
+            </div>
+            <div class="-mx-3 flex flex-wrap">
+                <div class="w-full px-3 sm:w-1/2">
+                    <div class="mb-5">
+                        <label for="prepTime" class="mb-3 block text-base font-medium text-[#07074D]">
+                            PrepTime
+                        </label>
+                        <input type="number" name="prepTime" id="prepTime"
+                            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" value="<%= DBReciepe.prepTime %>" />
+                    </div>
+                </div>
+                <div class="w-full px-3 sm:w-1/2">
+                    <div class="mb-5">
+                        <label for="cooktime" class="mb-3 block text-base font-medium text-[#07074D]">
+                            CookTime
+                        </label>
+                        <input type="number" name="cookTime" id="cookTime"
+                            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" value="<%= DBReciepe.cookTime %>" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <label for="ingredients" class="mb-3 block text-base font-medium text-[#07074D]">
+                    Ingredients
+                </label>
+                <input type="text" name="ingredients" id="ingredients" placeholder="Enter Ingredients"
+                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" value="<%= DBReciepe.ingredients %>"/>
+            </div>
+
+            <div class="-mx-3 flex flex-wrap">
+                <div class="w-full px-3 sm:w-1/2">
+                    <div class="mb-5">
+                        <label for="cusine" class="mb-3 block text-base font-medium text-[#07074D]">
+                            Cusine
+                        </label>
+                        <input type="text" name="cusine" id="cusine"
+                            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"value="<%= DBReciepe.cusine %>" />
+                    </div>
+                </div>
+                <div class="w-full px-3 sm:w-1/2">
+                    <div class="mb-5">
+                        <label for="category" class="mb-3 block text-base font-medium text-[#07074D]">
+                            Category
+                        </label>
+                        <input type="text" name="category" id="category"
+                            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" value="<%= DBReciepe.category %>"/>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="mb-5 pt-3">
+                <label  for="instruction" class="mb-5 block text-base font-semibold text-[#07074D] sm:text-xl">
+                    Instructions
+                </label>
+                <textarea name="instruction"  id="instruction"  cols="30" rows="5"  class="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-8 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" >
+                        <%= DBReciepe.instruction %>
+                    </textarea>
+            </div>
+
+            <div>
+                <button type="submit"
+                    class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
+                    Update
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

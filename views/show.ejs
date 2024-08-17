@@ -1,0 +1,229 @@
+<% layout('layouts/boilerplate') %>
+
+
+
+
+<% if(apiReciepe){ %>
+    
+<% for(data of apiReciepe){ %>
+<div>
+    <div class="  m-5 flex justify-between items-center">
+        <div>
+         <h1 class=" text-start  mb-4 ml-6 text-4xl font-extrabold leading-none tracking-tight text-black md:text-5xl lg:text-6xl dark:text-black"><%= data.strMeal %>  </h1>
+         <p class="mb-2 ml-6  text-lg text-gray-700 font-bold md:text-lg dark:text-gray-700"> Cusine:   <span class="  dark:text-gray-600  text-gray-600  font-medium">  <%= data.strArea %></span></p>
+         <p class="text-gray-700 ml-6 dark:text-gray-700 md:text-lg font-bold text-lg">Category: <span class="text-gray-600  font-medium"><%= data.strCategory %> </span> </p>
+      </div>
+
+         <div>
+            <img src="<%= data.strMealThumb %>" alt="" class="rounded-full w-56 h-56 mr-5">
+        </div>
+
+   </div>
+    <div class="m-7">
+        <h1 class=" mb-2 ml-4  text-lg text-gray-700 font-bold md:text-lg dark:text-gray-700">Instructions:</h1>
+        <p class="mb-3 ml-4 text-gray-500 dark:text-gray-500 text-pretty text-[17px]  w-100%"><%= data.strInstructions %></p>
+
+    </div>
+
+    <div class="m-7 flex justify-between ">
+
+        <div>
+            <h1 class="mb-2 ml-4 text-lg text-gray-700 font-bold md:text-lg dark:text-gray-700">Ingredients:</h1>
+            <ol class="ml-6 mt-2 space-y-1 list-decimal">
+                <% for (let key in data) { %>
+
+                     <% if (key.startsWith("strIngredient") && data[key]) { %>
+                    <li class="text-gray-500 dark:text-gray-500 text-pretty text-[17px]"><%= data[key] %></li>
+                  <% } %>
+
+               <% } %>
+            </ol>
+     </div>
+     
+     
+     <div class=" mt-6">
+      <% if(data.strYoutube){
+           let embedUrl=data.strYoutube.replace("watch?v=", "embed/"); %>
+
+            <iframe src="<%= embedUrl %>"  height="300" width="600" class=" rounded-md mr-10" allowfullscreen></iframe>
+      <%}%>
+
+     </div>
+    
+    </div>
+
+    <div class=" mt-10 ml-6">
+    <p class="text-gray-500 dark:text-gray-400">Lot of  people are in love with this meal. <a href="<%=data.strSource %>" class="inline-flex items-center font-medium text-blue-600 dark:text-blue-500 hover:underline">
+Learn more
+<svg class="w-4 h-4 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+</svg>
+</a></p>
+
+</div>
+
+</div>
+
+    <% } %>
+
+
+<% } %>
+
+
+
+<% if(DBReciepe){ %>
+    
+
+<div>
+    <div class="  m-5 flex justify-between items-center">
+       
+        <div>
+         <h1 class=" text-start  mb-4 ml-6 text-4xl font-extrabold leading-none tracking-tight text-black md:text-5xl lg:text-6xl dark:text-black"><%=DBReciepe.title %>  </h1>
+         <p class="mb-2 ml-6  text-lg text-gray-700 font-bold md:text-lg dark:text-gray-700"> Cusine:   <span class="  dark:text-gray-600  text-gray-600  font-medium">  <%= DBReciepe.cusine %></span></p>
+         <p class="text-gray-700 ml-6 dark:text-gray-700 md:text-lg font-bold text-lg">Category: <span class="text-gray-600  font-medium"><%= DBReciepe.category %> </span> </p>
+         <p class="text-gray-700 ml-6 dark:text-gray-700 md:text-lg font-bold text-lg">PrepTime: <span class="text-gray-600  font-medium"><%= DBReciepe.prepTime %> min </span> </p>
+         <p class="text-gray-700 ml-6 dark:text-gray-700 md:text-lg font-bold text-lg">CookTime: <span class="text-gray-600  font-medium"><%= DBReciepe.cookTime %> min </span> </p>
+         <p class="mb-2 ml-6  text-lg text-gray-500 font-medium md:text-lg "> Posted By:   <span class=" text-gray-500  font-medium">  <%= DBReciepe.author.username %></span></p>
+
+      </div>
+
+         <div>
+            <img src="<%=DBReciepe.image%>" alt="" class="rounded-full w-56 h-56 mr-5">
+        </div>
+
+   </div>
+    <div class="m-7">
+        <h1 class=" mb-2 ml-4  text-lg text-gray-700 font-bold md:text-lg dark:text-gray-700">Instructions:</h1>
+        <p class="mb-3 ml-4 text-gray-500 dark:text-gray-500 text-pretty text-[17px]  w-100%"><%= DBReciepe.instruction%></p>
+
+    </div>
+
+    <div class="m-7 flex justify-between ">
+
+        <div>
+            <h1 class="mb-2 ml-4 text-lg text-gray-700 font-bold md:text-lg dark:text-gray-700">Ingredients:</h1>
+            <ol class="ml-6 mt-2 space-y-1 list-decimal">
+                <% for (let key of DBReciepe.ingredients) { %>
+
+                    
+                    <li class="text-gray-500 dark:text-gray-500 text-pretty text-[17px]"><%= key %></li>
+               
+
+               <% } %>
+            </ol>
+     </div>
+     
+     
+     <div class="mt-6">
+  <% if (DBReciepe.youtube) { %>
+    <% 
+      
+      let embedUrl = DBReciepe.youtube.replace("watch?v=", "embed/");
+    %>
+    <iframe 
+      src="<%= embedUrl %>" 
+      height="300" 
+      width="600" 
+      class="rounded-md mr-10"
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
+  <% } %>
+
+</div>
+    
+    </div>
+
+    <div class=" mt-10 ml-6">
+    <p class="text-gray-500 dark:text-gray-400">Lot of  people are in love with this meal. <a href="#" class="inline-flex items-center font-medium text-blue-600 dark:text-blue-500 hover:underline">
+Learn more
+<svg class="w-4 h-4 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+</svg>
+</a></p>
+
+</div>
+
+</div>
+
+<% if(currentUser && DBReciepe.author.equals(currentUser._id)  ) {%>
+<div class=" flex justify-end ">
+            <form action="/reciepe/<%=DBReciepe.id%>?_method=DELETE" method="post" >
+                
+                <button type="submit" class=" bg-red-600 rounded-md text-white font-bold  py-2 px-3 mr-10">DELETE</button>    
+            </form>    
+      
+            
+            
+            <a href="/reciepe/<%=DBReciepe.id%>/edit">
+                <button type="submit" class=" bg-green-600 rounded-md text-white font-bold  py-2 px-3 mr-10">Edit</button>    
+            </a>
+                
+          </div>
+    <%}%>
+           
+                
+           
+
+
+
+        <h2 class="text-2xl lg:text-3xl font-bold m-8 text-gray-900 text-start">Comments....... </h2>
+       
+        <form class="mb-6 box-border max-w-xl m-7 " method="post" action="/reciepe/<%=DBReciepe.id%>">
+        <div class="py-2 px-4   mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200">
+            <label for="comment" class="sr-only">Your comment</label>
+            <textarea id="comment" rows="6" cols="20" name="body"
+                class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none"
+                placeholder="Write a comment..." required></textarea>
+        </div>
+        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Post
+            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+         </button>
+    </form>
+
+    <% if (DBReciepe.comments ) { %>
+    <p class="border-b border-gray-200 max-w-[45rem] mt-14"></p>
+
+    <% for (let comment of DBReciepe.comments) { %> 
+        <article class="p-6 mb-3 text-base max-w-full w-auto bg-white border-b border-gray-200">
+            <footer class="flex justify-between items-center mb-2">
+                <div class="flex items-center">
+                    <p class="inline-flex items-center mr-3 text-sm text-gray-700 font-semibold">
+                        <img class="mr-2 w-6 h-6 rounded-full"
+                             src="https://flowbite.com/docs/images/people/profile-picture-3.jpg"
+                             alt=""> <%= comment.postedBy%>
+                    </p>
+                   
+                   <p class="text-sm text-gray-600 dark:text-gray-400">
+                        <time pubdate ><%=comment.date%>,<%=comment.month%>, <%=comment.year%></time>
+                    </p>
+               
+                </div>
+            </footer>
+            <p class="text-gray-800"><%=comment.body%></p> 
+
+            <form action="/reciepe/<%= DBReciepe.id %>/<%= comment.id %>?_method=DELETE" method="post">
+              <%  if(currentUser && comment.postedBy===currentUser.username){ %>
+                <button type="submit" class=" mt-4 "> 
+                    <svg width="25px" height="25px"  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                    <path d="M6 7V18C6 19.1046 6.89543 20 8 20H16C17.1046 20 18 19.1046 18 18V7M6 7H5M6 7H8M18 7H19M18 7H16M10 11V16M14 11V16M8 7V5C8 3.89543 8.89543 3 10 3H14C15.1046 3 16 3.89543 16 5V7M8 7H16" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                     </svg>
+                    
+                    
+                    </button>  
+                <% }%>
+
+            </form>
+
+        </article>
+    <% } %>  
+<% } %>  <!-- Close if statement -->
+
+    <% } %>
+
+
+
+  
