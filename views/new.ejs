@@ -3,7 +3,7 @@
 
 <div class="flex items-center justify-center p-12 -mt-28">
     <div class="mx-auto w-full max-w-[550px] bg-white">
-        <form action="/reciepe" method="post" class="validate-form" novalidate>
+        <form action="/reciepe" method="post" class="validate-form" novalidate enctype="multipart/form-data">
             
             <div class="mb-5">
                 <label for="title" class="mb-3 block text-base font-medium text-[#07074D]">Title</label>
@@ -11,12 +11,23 @@
                     class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                 <p class="text-red-500 text-sm mt-1 hidden" id="titleError">Title is required.</p>
             </div>
-
+<!-- 
             <div class="mb-5">
                 <label for="image" class="mb-3 block text-base font-medium text-[#07074D]">Image Link</label>
                 <input type="text" name="image" id="image" placeholder="Enter your Image Link" required
                     class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                 <p class="text-red-500 text-sm mt-1 hidden" id="imageError">Image link is required.</p>
+            </div> -->
+
+            <div class="mb-5">
+                <label for="image" class="mb-3 block text-base font-medium text-[#07074D]">Upload Image </label>
+                <input type="file" id="image" name="image" placeholder="Please upload a image"
+                    class="w-full text-gray-400 font-semibold text-sm bg-white border file:cursor-pointer cursor-pointer file:border-0 file:py-3 file:px-4 file:mr-4 file:bg-gray-100 file:hover:bg-gray-200 file:text-gray-500 rounded" />
+                <p class="text-xs text-gray-400 mt-2">PNG, JPG SVG are Allowed.</p>
+                
+                <p class="text-red-500 text-sm mt-1 hidden" id="imageError">Image link is required.</p>
+
+
             </div>
 
             <div class="mb-5">

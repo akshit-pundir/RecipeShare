@@ -4,18 +4,32 @@
  <div class="flex items-center justify-center p-12 -mt-28">
   
     <div class="mx-auto w-full max-w-[550px] bg-white">
-        <form action="/reciepe/<%= DBReciepe.id %>?_method=PUT" method="post">
+        <form action="/reciepe/<%= DBReciepe.id %>?_method=PUT" method="post" enctype="multipart/form-data">
             <div class="mb-5">
                 <label for="title" class="mb-3 block text-base font-medium text-[#07074D]">Title</label>
                 <input type="text" name="title" id="title" placeholder="Dish Name"
                     class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" value="<%= DBReciepe.title %>" />
             </div>
 
-            <div class="mb-5">
+            <!-- <div class="mb-5">
                 <label for="image" class="mb-3 block text-base font-medium text-[#07074D]">Image Link</label>
                 <input type="text" name="image" id="image" placeholder="Enter your Image Link"
-                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" value="<%= DBReciepe.image %>" />
+                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"  />
+            </div> -->
+
+            <div class="mb-5">
+                <label for="image" class="mb-3 block text-base font-medium text-[#07074D]">Upload Image </label>
+                <input type="file" id="image" name="image" placeholder="Please upload a image"
+                    class="w-full text-gray-400 font-semibold text-sm bg-white border file:cursor-pointer cursor-pointer file:border-0 file:py-3 file:px-4 file:mr-4 file:bg-gray-100 file:hover:bg-gray-200 file:text-gray-500 rounded" value="<%= DBReciepe.image %>" />
+                <p class="text-xs text-gray-400 mt-2">PNG, JPG SVG are Allowed.</p>
+                
+               
+
+
             </div>
+
+
+
             <div class="mb-5">
                 <label for="youtube" class="mb-3 block text-base font-medium text-[#07074D]">
                     Youtube link
