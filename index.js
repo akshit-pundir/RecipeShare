@@ -86,7 +86,7 @@ app.use('/',UserRoute);
 
 // home page
 app.get('/', (req,res)=>{
-    res.render('home');
+    res.render('Home');
 })
 
 
